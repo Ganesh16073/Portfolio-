@@ -101,6 +101,8 @@ document.getElementById('contactForm').addEventListener('submit', function(event
                 text: "Your message has been sent successfully.",
                 icon: "success"
             });
+            // Optionally, reset the form
+            document.getElementById('contactForm').reset();
         } else {
             Swal.fire({
                 title: "Error!",
