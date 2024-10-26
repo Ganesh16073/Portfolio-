@@ -71,11 +71,49 @@ $(document).ready(function() {
         }
     });
 });
-function sucess()
-{
-    Swal.fire({
-        title: "Form Submited!",
-        text: "You clicked the button!",
-        icon: "success"
-      });
-}
+
+document.getElementById('contactForm').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent default form submission
+
+    // Create a FormData object from the form
+    const formData = new FormData(this);
+    const data = {};
+
+    // Convert FormData to JSON
+    formData.forEach((value, key) => {
+        data[key] = value;
+    });
+
+    // Send the form data using fetch with application/json
+    fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json', // Use application/json
+        },
+        body: JSON.stringify(data) // Convert data to JSON
+    })
+    .then(async (response) => {
+        let json = await response.json();
+        if (response.ok) { // Check for a successful response
+            // Show success message using SweetAlert
+            Swal.fire({
+                title: "Form Submitted!",
+                text: "Your message has been sent successfully.",
+                icon: "success"
+            });
+        } else {
+            Swal.fire({
+                title: "Error!",
+                text: "There was an error: " + json.message,
+                icon: "error"
+            });
+        }
+    })
+    .catch(error => {
+        Swal.fire({
+            title: "Submission failed!",
+            text: "An error occurred: " + error.message,
+            icon: "error"
+        });
+    });
+});

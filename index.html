@@ -187,8 +187,9 @@
                 </div>
                 <div class="column right">
                     <div class="text">Message me</div>
-                    <form action="https://api.web3forms.com/submit" method="post">
+                    <form id="contactForm"  method="post">
                         <input type="hidden" name="access_key" value="f4330bf8-9af6-4bed-989e-f412791bea7f">
+                        
                         <div class="fields">
                             <div class="field name">
                                 <input type="text" name="name" placeholder="Name" required>
@@ -204,7 +205,8 @@
                             <textarea cols="30" rows="10" placeholder="Message.." name="message" required></textarea>
                         </div>
                         <div class="button-area">
-                             <button type="submit" onclick="sucess();">Submit Form</button>
+                            
+                             <button type="submit" >Submit Form</button>
                         </div>
                     </form>
                 </div>
