@@ -71,3 +71,11 @@ $(document).ready(function() {
         }
     });
 });
+function sucess()
+{
+    Swal.fire({
+        title: "Form Submited!",
+        text: "You clicked the button!",
+        icon: "success"
+      });
+}
